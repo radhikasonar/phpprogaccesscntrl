@@ -11,7 +11,7 @@ echo '<p>The crc32 hash is 8 characters and looks like this: ' . $hashed_crc32 .
 $hashed_md5 = hash('md5', 'password');
 echo '<p>The md5 hash is 32 characters and looks like this: ' . $hashed_md5 . '</p>';
 
-$hashed_md5_crack = hash('md5', 'password' . 'ijdb');
+$hashed_md5_crack = hash('md5', 'password1' . 'ijdb');
 echo '<p>The md5 password crack = ' . $hashed_md5_crack . '</p>';
 
 $hashed_ripemd128 = hash('ripemd128', $plainPassword);
