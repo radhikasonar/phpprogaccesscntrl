@@ -1,4 +1,4 @@
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/helpers.inc.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/radhikasonar/includes/helpers.inc.php'; ?>
 	
 	<!--*************************************************************
 				Don't forget to change server path
@@ -51,7 +51,7 @@
 												is triggered - Page 291 -->
       </div>
     </form>
-    <p><a href="/admin/">Return to JMS home</a></p><!--
+    <p><a href="/radhikasonar/admin">Return to home</a></p><!--
 											5.	A user might request a protected page by accident, or might be unaware that a 
 												page is protected until they see the login form. We therefore provide a link 
 												back to an unprotected page as a way

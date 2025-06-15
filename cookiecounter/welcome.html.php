@@ -1,4 +1,4 @@
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/helpers.inc.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/radhikasonar/includes/helpers.inc.php'; ?>
 	
 	<!-- don't forget to change server path -->
 	

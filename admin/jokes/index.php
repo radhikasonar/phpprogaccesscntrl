@@ -1,8 +1,8 @@
 <?php
 
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/php-class/session13/includes/access.inc.php';
-
+require_once $_SERVER['DOCUMENT_ROOT'] . '/radhikasonar/includes/access.inc.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/radhikasonar/includes/db.inc.php';
 /*************************************************************
 //Don't forget to change server path
 /*************************************************************/
@@ -29,9 +29,7 @@ if (isset($_GET['add']))
   $id = '';
   $button = 'Add joke';
 
-  //include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-  include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
-
+  
   // Build the list of authors
   try
   {
@@ -75,9 +73,7 @@ if (isset($_GET['add']))
 
 if (isset($_GET['addform']))
 {
-  //include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-  include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
-
+  
   if ($_POST['author'] == '')
   {
     $error = 'You must choose an author for this joke.
@@ -136,9 +132,7 @@ if (isset($_GET['addform']))
 
 if (isset($_POST['action']) and $_POST['action'] == 'Edit')
 {
-  //include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-  include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
-
+ 
   try
   {
     $sql = 'SELECT id, joketext, authorid FROM joke WHERE id = :id';
@@ -224,9 +218,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
 
 if (isset($_GET['editform']))
 {
-  //include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-  include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
-
+  
   if ($_POST['author'] == '')
   {
     $error = 'You must choose an author for this joke.
@@ -298,7 +290,7 @@ if (isset($_GET['editform']))
 
 if (isset($_POST['action']) and $_POST['action'] == 'Delete')
 {
-  include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
+  
 
   // Delete category assignments for this joke
   try
@@ -336,9 +328,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'Delete')
 
 if (isset($_GET['action']) and $_GET['action'] == 'search')
 {
-  //include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-  include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
-
+  
   // The basic SELECT statement
   $select = 'SELECT id, joketext';
   $from   = ' FROM joke';
@@ -382,14 +372,12 @@ if (isset($_GET['action']) and $_GET['action'] == 'search')
   {
     $jokes[] = array('id' => $row['id'], 'text' => $row['joketext']);
   }
-
+  echo "here are the jokes";
   include 'jokes.html.php';
   exit();
 }
 
 // Display search form
-//include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
 
 try
 {

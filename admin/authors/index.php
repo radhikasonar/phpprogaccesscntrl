@@ -1,19 +1,23 @@
 <?php
 
-
-require_once $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/access.inc.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/radhikasonar/includes/db.inc.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/radhikasonar/includes/access.inc.php';
 
 //****************************************
 //Don't forget to update server path
 //****************************************
+
+
 if (!userIsLoggedIn())
 {
+  
   include '../login.html.php';
   exit();
 }
 
 if (!userHasRole('Account Administrator'))
 {
+  
   $error = 'Only Account Administrators may access this page.';
   include '../accessdenied.html.php';
   exit();
@@ -21,9 +25,7 @@ if (!userHasRole('Account Administrator'))
 
 if (isset($_GET['add']))
 {
-  //include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-  include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
-
+  
   $pageTitle = 'New Author';
   $action = 'addform';
   $name = '';
@@ -57,9 +59,7 @@ if (isset($_GET['add']))
 
 if (isset($_GET['addform']))
 {
-  //include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-  include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
-
+  
   try
   {
     $sql = 'INSERT INTO author SET
@@ -130,8 +130,6 @@ if (isset($_GET['addform']))
 
 if (isset($_POST['action']) and $_POST['action'] == 'Edit')
 {
-  //include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-  include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
 
   try
   {
@@ -203,8 +201,6 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
 
 if (isset($_GET['editform']))
 {
-  //include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-  include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
 
   try
   {
@@ -290,8 +286,6 @@ if (isset($_GET['editform']))
 
 if (isset($_POST['action']) and $_POST['action'] == 'Delete')
 {
-  //include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-  include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
 
   // Delete role assignments for this author
   try
@@ -381,11 +375,10 @@ if (isset($_POST['action']) and $_POST['action'] == 'Delete')
 }
 
 // Display author list
-//include $_SERVER['DOCUMENT_ROOT'] . '/includes/db.inc.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/php-class/Session13/includes/db.inc.php';
 
 try
 {
+
   $result = $pdo->query('SELECT id, name FROM author');
 }
 catch (PDOException $e)

@@ -1,4 +1,4 @@
-<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/helpers.inc.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/radhikasonar/includes/helpers.inc.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,7 +28,7 @@
       </table>
     <?php endif; ?>
     <p><a href="?">New search</a></p>
-    <p><a href="..">Return to JMS home</a></p>
+    <p><a href="..">Return to home</a></p>
     <?php include '../logout.inc.html.php'; ?>
   </body>
 </html>

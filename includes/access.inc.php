@@ -4,16 +4,20 @@ function userIsLoggedIn()//check if the login form has been submitted - Page 294
 {
   if (isset($_POST['action']) and $_POST['action'] == 'login')
   {
+
 	  //make sure that the user has filled in a value for both the email address and password - Page 294
     if (!isset($_POST['email']) or $_POST['email'] == '' or
       !isset($_POST['password']) or $_POST['password'] == '')
     {
+
       $GLOBALS['loginError'] = 'Please fill in both fields';
+      echo $GLOBALS['loginError'];
       return FALSE;
     }
 	/*scramble the submitted password to match the scrambled version that will be stored in the 
 	database - Page 295 */
     $password = md5($_POST['password'] . 'ijdb');
+
 	
 	//query the database for a matching author record - Page 295
     if (databaseContainsAuthor($_POST['email'], $password))
@@ -61,10 +65,11 @@ function userIsLoggedIn()//check if the login form has been submitted - Page 294
 
 function databaseContainsAuthor($email, $password)
 {
-  include 'db.inc.php';
+  include $_SERVER ['DOCUMENT_ROOT'].'/radhikasonar/includes/db.inc.php';
 	
   try
   {
+
     $sql = 'SELECT COUNT(*) FROM author
         WHERE email = :email AND password = :password';
     $s = $pdo->prepare($sql);
@@ -75,7 +80,7 @@ function databaseContainsAuthor($email, $password)
   catch (PDOException $e)
   {
     $error = 'Error searching for author.';
-    include 'error.html.php';
+    include $_SERVER ['DOCUMENT_ROOT'].'/radhikasonar/includes/error.html.php';
     exit();
   }
 
@@ -93,7 +98,8 @@ function databaseContainsAuthor($email, $password)
 
 function userHasRole($role)
 {
-  include 'db.inc.php';
+  
+  include $_SERVER ['DOCUMENT_ROOT'].'/radhikasonar/includes/db.inc.php';
   
 	/*need to check if the specified author has been assigned that role. 
 	This query will involve three database tables - Page 298 */
@@ -103,15 +109,17 @@ function userHasRole($role)
         INNER JOIN authorrole ON author.id = authorid
         INNER JOIN role ON roleid = role.id
         WHERE email = :email AND role.id = :roleId";
+    
     $s = $pdo->prepare($sql);
     $s->bindValue(':email', $_SESSION['email']);
     $s->bindValue(':roleId', $role);
+  
     $s->execute();
   }
   catch (PDOException $e)
   {
     $error = 'Error searching for author roles.';
-    include 'error.html.php';
+    include $_SERVER ['DOCUMENT_ROOT'].'/radhikasonar/includes/error.html.php';
     exit();
   }
 
