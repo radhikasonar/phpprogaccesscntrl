@@ -1,0 +1,3 @@
+ALTER TABLE author ADD COLUMN password CHAR(32)
+
+Page 283

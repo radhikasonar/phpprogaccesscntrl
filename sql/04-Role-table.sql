@@ -1,0 +1,6 @@
+CREATE TABLE role (
+id VARCHAR(255) NOT NULL PRIMARY KEY,
+description VARCHAR(255)
+) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB
+
+role-based access control:Page 285
